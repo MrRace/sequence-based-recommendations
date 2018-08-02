@@ -4,7 +4,7 @@ import numpy as np
 import theano
 import theano.tensor as T
 import lasagne
-import cPickle
+import pickle as pk
 import re
 import os
 import glob
@@ -475,7 +475,7 @@ class RNNBase(object):
 			os.makedirs(os.path.dirname(filename))
 		param = lasagne.layers.get_all_param_values(self.l_out)
 		f = file(filename, 'wb')
-		cPickle.dump(param,f,protocol=cPickle.HIGHEST_PROTOCOL)
+		pk.dump(param,f,protocol=pk.HIGHEST_PROTOCOL)
 		f.close()
 
 	def load_last(self, save_dir):
@@ -510,7 +510,7 @@ class RNNBase(object):
 		'''Load parameters values form a file
 		'''
 		f = file(filename, 'rb')
-		param = cPickle.load(f)
+		param = pk.load(f)
 		f.close()
 		lasagne.layers.set_all_param_values(self.l_out, [i.astype(theano.config.floatX) for i in param])
 	

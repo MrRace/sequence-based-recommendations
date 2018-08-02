@@ -1,16 +1,19 @@
 from __future__ import print_function
 
+import sys
+import os
+
 import numpy as np
 import theano
 import theano.tensor as T
 import lasagne
-import cPickle
+import pickle as pk
 import random
 from time import time
-import rnn_base as rnn
+from rnn_base import RNNBase
 from sparse_lstm import *
 
-class RNNOneHot(rnn.RNNBase):
+class RNNOneHot(RNNBase):
 	"""RNNOneHot are recurrent neural networks that do not depend on the factorization: they are based on one-hot encoding.
 
 	The parameters specific to the RNNOneHot are:

@@ -1,0 +1,5 @@
+set	n_users	n_items	n_interactions	longest_sequence
+Full	6040	3416	999611	2277
+Train	5843	3416	965412	1850
+Val	98	2773	17067	1514
+Test	99	2930	17132	2277

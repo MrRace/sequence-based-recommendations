@@ -1,3 +1,4 @@
+import sys
 import argparse
 from neural_networks.rnn_one_hot import RNNOneHot
 from neural_networks.rnn_cluster import RNNCluster

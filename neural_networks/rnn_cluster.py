@@ -4,7 +4,7 @@ import numpy as np
 import theano
 import theano.tensor as T
 import lasagne
-import cPickle
+import pickle as pk
 import os
 import sys
 import random
@@ -522,14 +522,14 @@ class RNNCluster(rnn.RNNBase):
 		param.append(self.cluster_repartition.get_value(borrow=True))
 		param.append([p.get_value(borrow=True) for p in self.cluster_selection_layer.get_params()])
 		f = file(filename, 'wb')
-		cPickle.dump(param,f,protocol=cPickle.HIGHEST_PROTOCOL)
+		pk.dump(param,f,protocol=pk.HIGHEST_PROTOCOL)
 		f.close()
 		
 	def load(self, filename):
 		'''Load parameters values form a file
 		'''
 		f = file(filename, 'rb')
-		param = cPickle.load(f)
+		param = pk.load(f)
 		f.close()
 		lasagne.layers.set_all_param_values(self.l_out, [i.astype(theano.config.floatX) for i in param[:-2]])
 		self.cluster_repartition.set_value(param[-2])

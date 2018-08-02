@@ -4,7 +4,7 @@ import numpy as np
 import theano
 import theano.tensor as T
 import lasagne
-import cPickle
+import pickle as pk
 import random
 from time import time
 import rnn_base as rnn

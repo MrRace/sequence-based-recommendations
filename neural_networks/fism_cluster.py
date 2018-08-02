@@ -6,7 +6,7 @@ import theano.tensor as T
 import scipy.sparse as sp
 import theano.sparse
 import lasagne
-import cPickle
+import pickle as pk
 import os
 import sys
 import random
