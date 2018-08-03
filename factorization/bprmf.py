@@ -7,6 +7,7 @@ import re
 import os
 import glob
 import sys
+sys.path.append("/root/sequence-based-recommendations/factorization/")
 from time import time
 from mf_base import MFBase
 

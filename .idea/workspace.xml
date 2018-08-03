@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0297c849-9cb4-4d51-bed9-61b7bf77b1d4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/helpers/command_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/command_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_networks/fism_cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_networks/fism_cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_networks/rnn_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_networks/rnn_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_networks/rnn_cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_networks/rnn_cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_networks/rnn_margin.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_networks/rnn_margin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sequence-based-recommendations.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sequence-based-recommendations.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neural_networks/rnn_one_hot.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_networks/rnn_one_hot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_networks/rnn_sampling.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_networks/rnn_sampling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_networks/stacked_denoising_autoencoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_networks/stacked_denoising_autoencoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raw_data/data/training_set_item_popularity.npy" beforeDir="false" afterPath="$PROJECT_DIR$/raw_data/data/training_set_item_popularity.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raw_data/ml-1m.zip" beforeDir="false" afterPath="$PROJECT_DIR$/raw_data/ml-1m.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,7 +55,8 @@
       <file leaf-file-name="fossil.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/factorization/fossil.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="253">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -95,11 +97,6 @@
             <path>
               <item name="sequence-based-recommendations" type="b2602c69:ProjectViewProjectNode" />
               <item name="sequence-based-recommendations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sequence-based-recommendations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sequence-based-recommendations" type="462c0819:PsiDirectoryNode" />
-              <item name="factorization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sequence-based-recommendations" type="b2602c69:ProjectViewProjectNode" />
@@ -145,7 +142,7 @@
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Python Console" visible="true" weight="0.1434644" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
@@ -197,7 +194,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/factorization/fossil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="253">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

@@ -166,7 +166,7 @@ class LTM(object):
 			epochs_offset = self.load_last(save_dir)
 		if not hasattr(self, 'w2v_model'):
 			self.w2v_model = Word2Vec(iter = 1, min_count = 1, size=self.k, window=self.window, alpha=self.learning_rate, sg=0)
-			self.w2v_model.build_vocab([map(str, range(dataset.n_items))])
+			self.w2v_model.build_vocab([list(map(str, range(dataset.n_items)))])
 
 		start_time = time()
 		next_save = int(progress)
@@ -177,7 +177,7 @@ class LTM(object):
 		while (time() - start_time < max_time and iterations < max_iter):
 
 			# Train one epoch
-			self.w2v_model.train(self.word2vec_training_generator(dataset))
+			self.w2v_model.train(self.word2vec_training_generator(dataset),total_examples=self.w2v_model.corpus_count, epochs=self.w2v_model.iter)
 
 			# Check if it is time to save the model
 			iterations += 1
@@ -201,7 +201,7 @@ class LTM(object):
 					self._print_progress(iterations, epochs[-1], start_time, metrics, validation_metrics)
 
 					# Save model
-					run_nb = len(metrics[self.metrics.keys()[0]])-1
+					run_nb = len(metrics[list(self.metrics.keys())[0]])-1
 					if autosave == 'All':
 						filename[run_nb] = save_dir + self._get_model_filename(round(epochs[-1], 3))
 						self.save(filename[run_nb])

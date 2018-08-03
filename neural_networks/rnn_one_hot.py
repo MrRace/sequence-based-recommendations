@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import sys
 import os
-
+sys.path.append("/root/sequence-based-recommendations/neural_networks/")
 import numpy as np
 import theano
 import theano.tensor as T
@@ -10,6 +10,7 @@ import lasagne
 import pickle as pk
 import random
 from time import time
+print(sys.path)
 from rnn_base import RNNBase
 from sparse_lstm import *
 
