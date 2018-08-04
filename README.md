@@ -262,6 +262,12 @@ Option | Desciption
 `--in_do float` | Dropout rate applied to the input layer of the SDAE (default: 0.2).
 `--do float` | Dropout rate applied to the hidden layers of the SDAE (default: 0.5).
 
+例子：
+```
+-d raw_data/ -m SDA --r_l 50-32-50
+
+```
+
 #### Latent Trajectory Modeling
 
 Use it with `-m  LTM`.
