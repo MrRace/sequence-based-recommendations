@@ -144,9 +144,10 @@ class StackedDenoisingAutoencoder(RNNBase):
 					Y[j, :] = self._one_hot_encoding([i[0] for i in sequence])
 					yield (X.astype(theano.config.floatX),Y.astype(theano.config.floatX))
 				else:
-					X[j, :] = self._one_hot_encoding([i[0] for i in sequence[:len(sequence)/2]])
-					Y[j, :] = self._one_hot_encoding(sequence[len(sequence)/2][0])
-					yield (X.astype(theano.config.floatX),Y.astype(theano.config.floatX)), [i[0] for i in sequence[len(sequence)/2:]]
+					# 在python3中的除法操作/结果是浮点型。len(sequence)/2
+					X[j, :] = self._one_hot_encoding([i[0] for i in sequence[:int(len(sequence)/2)]])
+					Y[j, :] = self._one_hot_encoding(sequence[int(len(sequence)/2)][0])
+					yield (X.astype(theano.config.floatX),Y.astype(theano.config.floatX)), [i[0] for i in sequence[int(len(sequence)/2):]]
 
 	def _one_hot_encoding(self, ids):
 		ohe = np.zeros(self._input_size())

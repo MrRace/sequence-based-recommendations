@@ -245,7 +245,11 @@ In order to use it, use the option `--clusters nb_of_clusters`.
 For example, `python train.py -d path/to/dataset/ -m RNN --loss BPR --clusters 10` will train an RNN with the BPR loss and 10 clusters of items.
 Note that the clustering is only compatible with sampling-based loss (BPR, Blackout and TOP1). 
 It also works with `--loss CCE`, but a sampling version of CCE is then used instead of the normal categorical cross-entropy.
-	
+
+例子：
+```
+-d raw_data/ -m RNN --r_t GRU --r_l 100-50-50 --r_bi
+```
 
 #### Stacked Denoising Autoencoders
 
