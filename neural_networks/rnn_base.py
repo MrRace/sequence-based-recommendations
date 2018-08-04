@@ -11,10 +11,10 @@ import glob
 import sys
 import random
 from time import time
-from sequence_noise import SequenceNoise
-from update_manager import Adagrad
-from recurrent_layers import RecurrentLayers
-from target_selection import SelectTargets
+from neural_networks.sequence_noise import SequenceNoise
+from neural_networks.update_manager import Adagrad
+from neural_networks.recurrent_layers import RecurrentLayers
+from neural_networks.target_selection import SelectTargets
 from helpers import evaluation
 
 #Lasagne Seed for Reproducibility

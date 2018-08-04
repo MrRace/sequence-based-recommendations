@@ -90,6 +90,8 @@ The basic usage is the following:
 ````
 python train.py -d path/to/dataset/ -m Method_name
 ````
+比如：`python train.py -d raw_data/ -m LTM`
+
 
 The argument `-d` is used to specify the path to the folder that contains the "data", "models" and "results" subfolders created by preprocess.py. 
 If you have multiple datasets with a partly common path (e.g. path/to/dataset1/, path/to/dataset2/, etc.) you can specify this common path in the variable DEFAULT_DIR of helpers/data_handling.py. For example, setting DEFAULT_DIR = "path/to/" and using the argument `-d dataset1` will look for the dataset in "path/to/dataset1/".
@@ -117,6 +119,37 @@ Option | Desciption
 `--es_LiB` | Lower is better for validation score. By default a higher validation score is considered better, but if it is not the case you can use this option.
 
 The options specific to each method are explained in the Methods section.
+
+可能出现 在`rnn_one_hot.py`导入包的时候`import rnn_base`出错。在`neural_networks`这个自定义的包下，`rnn_one_hot.py` 和`rnn_base.py`是同级的。
+
+报错：
+```
+ File "train.py", line 10, in <module>
+    import helpers.command_parser as parse
+  File "/data/liujiepeng/recommendations/temp/sequence-based-recommendations/helpers/command_parser.py", line 3, in <module>
+    from neural_networks.rnn_one_hot import RNNOneHot
+  File "/data/liujiepeng/recommendations/temp/sequence-based-recommendations/neural_networks/rnn_one_hot.py", line 14, in <module>
+    from rnn_base import RNNBase
+ImportError: No module named 'rnn_base'
+```
+解决方案1：
+
+```
+export PYTHONPATH=./neural_networks:./factorization:./word2vec:./helpers
+```
+上面这种方式直接该会话窗口有效。其他会话窗口是无效的，除非是添加到系统环境变量`/etc/profile`,`source /etc/profile`生效
+
+PS：
+```
+/etc/profile，/etc/bashrc 是系统全局环境变量设定
+~/.profile，~/.bashrc用户家目录下的私有环境变量设定
+```
+
+解决方案2：
+在每个自定义的包下import 包的时候加上该包的名字。这样的话，改动地方会比较多，显得很繁琐。
+
+PS:
+如果在当前source activate pytho35的环境，但是这个环境`source /etc/profile`操作，此时的环境又会回退到pytho27的。
 
 ### test.py
 

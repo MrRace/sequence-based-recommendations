@@ -3,7 +3,7 @@ import numpy as np
 import theano
 import theano.tensor as T
 import lasagne
-from sparse_lstm import *
+from neural_networks.sparse_lstm import *
 
 def recurrent_layers_command_parser(parser):
 	parser.add_argument('--r_t', dest='recurrent_layer_type', choices=['LSTM', 'GRU', 'Vanilla'], help='Type of recurrent layer', default='GRU')

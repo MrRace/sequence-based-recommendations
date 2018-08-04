@@ -10,8 +10,8 @@ import sys
 import random
 from bisect import bisect
 from time import time
-import rnn_base as rnn
-from sparse_lstm import *
+import neural_networks.rnn_base as rnn
+from neural_networks.sparse_lstm import *
 from helpers import evaluation
 from theano.sandbox.rng_mrg import MRG_RandomStreams
 

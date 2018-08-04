@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import sys
 import os
-sys.path.append("/root/sequence-based-recommendations/neural_networks/")
+#sys.path.append("/root/sequence-based-recommendations/neural_networks/")
 import numpy as np
 import theano
 import theano.tensor as T
@@ -11,8 +11,8 @@ import pickle as pk
 import random
 from time import time
 print(sys.path)
-from rnn_base import RNNBase
-from sparse_lstm import *
+from neural_networks.rnn_base import RNNBase
+from neural_networks.sparse_lstm import *
 
 class RNNOneHot(RNNBase):
 	"""RNNOneHot are recurrent neural networks that do not depend on the factorization: they are based on one-hot encoding.
