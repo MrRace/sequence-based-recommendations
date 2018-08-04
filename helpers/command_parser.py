@@ -90,6 +90,7 @@ def get_predictor(args):
 	sequence_noise = get_sequence_noise(args)
 	target_selection = get_target_selection(args)
 
+	# 指定算法
 	if args.method == "MF":
 		return Factorization()
 	elif args.method == "BPRMF":
@@ -126,4 +127,3 @@ def get_predictor(args):
 		return StackedDenoisingAutoencoder(interactions_are_unique=(not args.repeated_interactions), layers = args.layers, input_dropout=args.input_dropout, dropout=args.dropout, updater=updater, batch_size=args.batch_size, use_ratings_features=args.rf)
 
 
-	

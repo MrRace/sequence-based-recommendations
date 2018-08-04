@@ -35,14 +35,16 @@ def num(s):
 
 def main():
 
-	
+
 	args = parse.command_parser(parse.predictor_command_parser, training_command_parser, parse.early_stopping_command_parser)
 
+	# 设置采用的算法
 	predictor = parse.get_predictor(args)
 
-	
+	# 数据获取
 	dataset = DataHandler(dirname=args.dataset, extended_training_set=args.extended_set, shuffle_training=args.tshuffle)
 
+	# 模型初始化
 	predictor.prepare_model(dataset)
 	predictor.train(dataset, 
 		save_dir=dataset.dirname + "models/" + args.dir, 
@@ -58,4 +60,4 @@ def main():
 		validation_metrics=args.metrics.split(','))
 
 if __name__ == '__main__':
-    main()
+	main()

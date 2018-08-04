@@ -40,9 +40,10 @@ class MFBase(object):
 
 	def change_data_format(self, dataset):
 		'''Gets a generator of data in the sequence format and save data in the csr format
+		csr是一种稀疏矩阵存储格式
 		'''
 		
-		self.users = np.zeros((self.n_users,2), dtype=np.int32)
+		self.users = np.zeros((self.n_users, 2), dtype=np.int32)
 		self.items = np.zeros(dataset.training_set.n_interactions, dtype=np.int32)
 		cursor = 0
 		with open(dataset.training_set.filename, 'r') as f:
@@ -119,7 +120,7 @@ class MFBase(object):
 		early_stopping : should be a callable that will recieve the list of validation error and the corresponding epochs and return a boolean indicating whether the learning should stop.
 		'''
 
-		# Change data format
+		# Change data format，转为稀疏矩阵存储格式
 		self.change_data_format(dataset)
 		#del dataset.training_set.lines
 
@@ -130,7 +131,10 @@ class MFBase(object):
 		iterations = 0
 		epochs_offset = 0
 		if load_last_model:
+			# 加载最近的模型，用以校验和测试
 			epochs_offset = self.load_last(save_dir)
+
+		# 从头开始训练
 		if epochs_offset == 0:
 			self.init_model()
 
@@ -178,7 +182,7 @@ class MFBase(object):
 					self._print_progress(iterations, epochs[-1], start_time, train_costs, metrics, validation_metrics)
 
 					# Save model
-					run_nb = len(metrics[self.metrics.keys()[0]])-1
+					run_nb = len(metrics[list(self.metrics.keys())[0]])-1
 					if autosave == 'All':
 						filename[run_nb] = save_dir + self._get_model_filename(round(epochs[-1], 3))
 						self.save(filename[run_nb])

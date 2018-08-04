@@ -8,8 +8,9 @@ import os.path
 # Data directory
 DEFAULT_DIR = '../../data/'
 
-
-class DataHandler(object):
+# Python2.x 记得继承 object,python3不用
+# class DataHandler(object):
+class DataHandler():
 	''' Prepare data for the differents algorithms.
 	Give easy access to training, validation and test set and to information about the dataset 
 	such as number of users, items and interactions.
@@ -17,7 +18,6 @@ class DataHandler(object):
 
 	def __init__(self, dirname, extended_training_set=False, shuffle_training=False):
 		'''
-
 		Parameter
 		---------
 
@@ -36,7 +36,8 @@ class DataHandler(object):
 		shuffle_training: boolean
 			If True, the order of the training sequences is shuffled between each pass.
 		'''
-		super(DataHandler, self).__init__()
+		super().__init__() # python3
+		# super(DataHandler, self).__init__() # python2
 
 		self.dirname = self._get_path(dirname)
 
@@ -88,6 +89,7 @@ class DataHandler(object):
 
 	def _load_stats(self):
 		''' Load informations about the dataset from dirname/data/stats
+		加载的是数据信息，训练集，校验集和测试集的数据信息
 		'''
 		with open(self.dirname+'data/stats', 'r') as f:
 			_ = f.readline() # Line with column titles
@@ -104,7 +106,11 @@ class DataHandler(object):
 class SequenceGenerator(object):
 	"""docstring for SequenceGenerator"""
 	def __init__(self, filename, shuffle=False):
-		super(SequenceGenerator, self).__init__()
+		super().__init__()
+		# super(SequenceGenerator, self).__init__()
+		"""Python 3 可以使用直接使用 super().xxx 代替 super(Class, self).xxx :
+		所以这里super().__init__()就可以
+		"""
 		self.filename = filename
 		self.shuffle = shuffle
 		self.epochs = 0.
@@ -162,7 +168,7 @@ class SequenceGenerator(object):
 				# Extract subsequence if needed
 				if (length < len(sequence)):
 					if subsequence == 'random':
-						sequence = [ sequence[i] for i in sorted(random.sample(xrange(len(sequence)), length)) ]
+						sequence = [ sequence[i] for i in sorted(random.sample(range(len(sequence)), length)) ]
 					elif subsequence == 'contiguous':
 						start = np.random.randint(0, len(sequence) - length + 1)
 						sequence = sequence[start:start+length]

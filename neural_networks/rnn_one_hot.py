@@ -100,7 +100,8 @@ class RNNOneHot(RNNBase):
 		
 		for i, sequence in enumerate(sequences):
 			user_id, in_seq, target = sequence
-			seq_features = np.array(map(lambda x: self._get_features(x, user_id), in_seq))
+			seq_features = np.array(list(map(lambda x: self._get_features(x, user_id), in_seq)))
+			# python2中，map返回一个list，但是在python3中，map返回的则是一个迭代器
 			X[i, :len(in_seq), :] = seq_features # Copy sequences into X
 			mask[i, :len(in_seq)] = 1
 			Y[i] = target[0][0] # id of the first and only target
