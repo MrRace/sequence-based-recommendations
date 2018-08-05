@@ -41,15 +41,21 @@ class RNNOneHot(RNNBase):
 	def _prepare_networks(self, n_items):
 		''' Prepares the building blocks of the RNN, but does not compile them:
 		'''
-	   
+
 		self.n_items = n_items
 		# The input is composed of to parts : the on-hot encoding of the movie, and the features of the movie
+		# 输入层采用InputLayer进行定义，InputLayer只用于接收数据，不对数据做任何处理，类似于tensorfolw里的placeholder功能
+        # shape里对应的四个参数分别表示：(batchsize, channels, rows, columns),input_var表示需要连接到网络输入层的theano变量，默认为none。
 		self.l_in = lasagne.layers.InputLayer(shape=(self.batch_size, self.max_length, self._input_size()))
 		# The input is completed by a mask to inform the LSTM of the length of the sequence
+		# 对输入进行mask操作
 		self.l_mask = lasagne.layers.InputLayer(shape=(self.batch_size, self.max_length))
 
 		# recurrent layer
 		if not self.use_movies_features:
+			# n_optional_feature
+			# temp_value = self._n_optional_features()
+			# RecurrentLayers类有__Call__函数，所以实例recurrent_layer是也是一个函数
 			l_recurrent = self.recurrent_layer(self.l_in, self.l_mask, true_input_size=self.n_items + self._n_optional_features(), only_return_final=True)
 		else:
 			l_recurrent = self.recurrent_layer(self.l_in, self.l_mask, true_input_size=None, only_return_final=True)
@@ -59,8 +65,8 @@ class RNNOneHot(RNNBase):
 		# l_last_slice = lasagne.layers.SliceLayer(l_recurrent, -1, 1)
 
 		# Theano tensor for the targets
-		target = T.ivector('target_output')
-		target_popularity = T.fvector('target_popularity')
+		target = T.ivector('target_output')# int型的vector
+		target_popularity = T.fvector('target_popularity')# float 型的vector
 		self.exclude = T.fmatrix('excluded_items')
 		self.theano_inputs = [self.l_in.input_var, self.l_mask.input_var, target, target_popularity, self.exclude]
 		

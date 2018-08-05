@@ -116,6 +116,12 @@ def get_predictor(args):
 		if args.clusters > 0:
 			return RNNCluster(interactions_are_unique=(not args.repeated_interactions), max_length=args.max_length, cluster_selection_noise=args.csn, loss=args.loss, predict_with_clusters=(not args.ignore_clusters), sampling_bias=args.sampling_bias, sampling=args.sampling, cluster_sampling=args.c_sampling, init_scale=args.init_scale, scale_growing_rate=args.scale_growing_rate, max_scale=args.max_scale, n_clusters=args.clusters, cluster_type=args.cluster_type, updater=updater, target_selection=target_selection, sequence_noise=sequence_noise, recurrent_layer=recurrent_layer, use_ratings_features=args.rf, use_movies_features=args.mf, use_users_features=args.uf, batch_size=args.batch_size)
 		elif args.loss == 'CCE':
+			"""
+			默认是采用交叉熵损失函数
+			备注说明：
+				sigmoid和softmax是神经网络输出层使用的激活函数，分别用于两类判别和多类判别。
+				binary cross - entropy和categorical cross - entropy是相对应的损失函数。
+			"""
 			return RNNOneHot(interactions_are_unique=(not args.repeated_interactions), max_length=args.max_length, diversity_bias=args.diversity_bias, regularization=args.regularization, updater=updater, target_selection=target_selection, sequence_noise=sequence_noise, recurrent_layer=recurrent_layer, use_ratings_features=args.rf, use_movies_features=args.mf, use_users_features=args.uf, batch_size=args.batch_size)
 		elif args.loss in ['hinge', 'logit', 'logsig']:
 			return RNNMargin(interactions_are_unique=(not args.repeated_interactions), loss_function=args.loss, balance = args.balance, popularity_based = args.pb, min_access = args.min_access, target_selection=target_selection, sequence_noise=sequence_noise, recurrent_layer=recurrent_layer, max_length=args.max_length, updater=updater, use_ratings_features=args.rf, use_movies_features=args.mf, use_users_features=args.uf, batch_size=args.batch_size)

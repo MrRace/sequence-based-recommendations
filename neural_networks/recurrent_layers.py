@@ -22,7 +22,7 @@ class RecurrentLayers(object):
 		self.layers = layers
 		self.bidirectional = bidirectional
 		self.embedding_size = embedding_size
-		self.grad_clip=grad_clipping
+		self.grad_clip = grad_clipping
 		self.set_name()
 
 	def set_name(self):
@@ -40,11 +40,15 @@ class RecurrentLayers(object):
 
 
 	def __call__(self, input_layer, mask_layer, true_input_size=None, only_return_final=True):
-
+		# __call__()的作用是使实例能够像函数一样被调用
 		if true_input_size is None and self.embedding_size > 0:
 			raise ValueError('Embedding layer only works with sparse inputs')
 
 		if self.embedding_size > 0:
+			"""
+				An ExpressionLayer that does not change the shape of the data (i.e., is constructed with the default setting of output_shape=None) 
+			is functionally equivalent to a NonlinearityLayer.
+			"""
 			in_int32 = lasagne.layers.ExpressionLayer(input_layer, lambda x: x.astype('int32')) # change type of input
 			l_emb = lasagne.layers.flatten(lasagne.layers.EmbeddingLayer(in_int32, input_size=true_input_size, output_size=self.embedding_size), outdim=3)
 			l_rec = self.get_recurrent_layers(l_emb, mask_layer, true_input_size=None, only_return_final=only_return_final)

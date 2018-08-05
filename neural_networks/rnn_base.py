@@ -259,7 +259,9 @@ class RNNBase(object):
 		'''
 
 		self.set_dataset(dataset)
-		
+		# 交集
+		t1 = len(set(self.metrics.keys()))# 结果衡量标准。一共有6种，校验集用到的衡量标准是其子集
+
 		if len(set(validation_metrics) & set(self.metrics.keys())) < len(validation_metrics):
 			raise ValueError('Incorrect validation metrics. Metrics must be chosen among: ' + ', '.join(self.metrics.keys()))
 
@@ -289,15 +291,13 @@ class RNNBase(object):
 		filename = {}
 
 		try: 
-			while (time() - start_time < max_time and iterations < max_iter):
-
+			while(time() - start_time < max_time and iterations < max_iter):
 				# Train with a new batch
 				try:
-					batch = next(batch_generator)
+					batch = next(batch_generator)#返回迭代器的下一个项目。
 					cost = self.train_function(*batch)
 					if np.isnan(cost):
 						raise ValueError("Cost is NaN")
-
 				except StopIteration:
 					break
 
