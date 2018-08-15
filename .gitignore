@@ -3,3 +3,4 @@ raw_data/models/*
 *.pyc
 /.ipynb_checkpoints
 /data
+.ipynb_checkpoints

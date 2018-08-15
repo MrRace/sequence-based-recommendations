@@ -11,7 +11,7 @@ import math
 from collections import defaultdict
 
 import Utils.similarity
-import Utils.utils
+from Utils import utils
 from Utils.utils import LogTime
 
 

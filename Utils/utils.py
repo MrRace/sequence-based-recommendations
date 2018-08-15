@@ -7,7 +7,7 @@ import pickle
 
 import os
 import shutil
-
+from sklearn.metrics import mean_squared_error
 
 class LogTime:
     """
@@ -111,3 +111,16 @@ class ModelManager:
         """
         if clean and os.path.exists('model'):
             shutil.rmtree('model')
+
+def get_mse(pred, actual):
+    """
+    计算均方误差
+    :param pred:
+    :param actual:
+    :return:
+    """
+    # Ignore nonzero terms.
+
+    pred = pred[actual.nonzero()].flatten()
+    actual = actual[actual.nonzero()].flatten()
+    return mean_squared_error(pred, actual)

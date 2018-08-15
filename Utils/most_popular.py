@@ -11,7 +11,7 @@ from collections import defaultdict
 from operator import itemgetter
 
 import Utils.similarity
-import Utils.utils
+from Utils import utils
 
 
 class MostPopular:
